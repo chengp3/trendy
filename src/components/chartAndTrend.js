@@ -7,9 +7,7 @@ import React, {useEffect, useState} from 'react'
 async function fd(ticker) {
   try {
     const endpoint = process.env.NEXT_PUBLIC_ep + 'i=' + ticker; // Replace with your actual API endpoint.
-    console.log(endpoint)
     const response = await axios.get(endpoint);
-    console.log(response)
 
     let data = JSON.parse(response.data.body)
 
