@@ -4,24 +4,113 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  
+  /* Split the RGB components of each color into separate variables for the gradient */
+  --background-start-r: 36;
+  --background-start-g: 37;
+  --background-start-b: 130;
+  
+  --background-end-r: 85;
+  --background-end-g: 61;
+  --background-end-b: 103;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    
+    /* Set the dark mode RGB values */
+    --background-start-r: 0;
+    --background-start-g: 0;
+    --background-start-b: 0;
+    
+    --background-end-r: 0;
+    --background-end-g: 0;
+    --background-end-b: 0;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #f2f1ef;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.bubble {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #413F3D;
+  border-radius: 50%;
+  background-color: transparent;
+  position: relative;
+  transition: all 0.3s ease; 
+  z-index: 1;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, z-index 0.2s step-end;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bubble:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.bubble:hover .tooltip, .bubble.current .tooltip {
+  opacity: 1;
+}
+
+.bubble.current {
+  background-color: rgba(150, 140, 180,.8);
+}
+
+.tooltip {
+  white-space: nowrap;
+  position: absolute;
+  bottom: 200%; /* Adjusted this to move the tooltip up 5px */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(150, 140, 180, 1);
+  color: white;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0; /* Tooltips are invisible by default */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transition for fading effect */
+}
+
+.tooltip::before { 
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(150, 140, 180, 1);;
+  transform: translateX(-50%);
+}
+
+.bubble.current .tooltip {
+  opacity: 1;
+}
+
+.bubble.current:hover .tooltip {
+  opacity: 1;
+}
+
+.bubble:hover .tooltip {
+  opacity: 1; 
+}
+
+.navbar:hover .bubble:not(:hover).current .tooltip {
+  opacity: 0.5;  
 }
