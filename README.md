@@ -1,6 +1,6 @@
 https://trendy-rho.vercel.app/
 
-A detour from futures algorithm work to play with front-end toys
+A detour from futures algo work to play with front-end toys
 
 Next.js/React.js
 
