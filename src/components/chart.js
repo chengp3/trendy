@@ -2,10 +2,9 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { createChart } from 'lightweight-charts';
-import { ChaoticOrbit } from '@uiball/loaders'
 import {motion as m} from 'framer-motion'
 
-export default function Chart ({ data, loading, uplines, sidelines, downlines}) {
+export default function Chart ({ data, uplines, sidelines, downlines}) {
     
     const chartRef = useRef(null);
     const containerRef = useRef(null);    
@@ -46,10 +45,6 @@ export default function Chart ({ data, loading, uplines, sidelines, downlines}) 
             chart.remove();
         };
     }, [data, uplines, sidelines, downlines]);
-
-    if (loading) return (<ChaoticOrbit size={50} color='red' style={{transition: 'opacity .5s'}}
-        className='h-full w-full flex-grow flex items-center justify-center'
-        />);
 
     return (<m.div initial={{opacity:0, scale: 0.95}} animate={{opacity:1, scale: 1}} transition={{duration:.5, ease:'easeOut'}} 
         ref={containerRef} className='h-full w-full flex-grow'></m.div>)

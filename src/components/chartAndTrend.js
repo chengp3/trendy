@@ -3,15 +3,15 @@ import trendlines from '../components/trend'
 import TrendStatement from '../components/trendStatement'
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
+import Loading from './loading'
 
 async function fd(ticker) {
   try {
-    const endpoint = process.env.NEXT_PUBLIC_ep + 'i=' + ticker; // Replace with your actual API endpoint.
+    const endpoint = process.env.NEXT_PUBLIC_ep + ticker;
     const response = await axios.get(endpoint);
+    console.log(endpoint)
 
-    let data = JSON.parse(response.data.body)
-
-    data = data.map(item => ({
+    const data = response.data.map(item => ({
       time: item['Datetime'] / 1000,
       open: item['Open'],
       high: item['High'],
@@ -61,6 +61,7 @@ export default function ChartAndTrend ({loading, setLoading, ticker}) {
       fetchData();
     }, [ticker])
 
+    if (loading) return (<Loading />);
 
     return (
       <div className='h-full w-full flex flex-col items-center drop-shadow-xl p-8'>
