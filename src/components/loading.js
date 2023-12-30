@@ -11,7 +11,7 @@ const Loading = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 8
+        staggerChildren: 2
       }
     }
   };
@@ -43,7 +43,6 @@ const Loading = () => {
             <motion.div key={1} variants={item} className=''>Calling Lambda to request data...</motion.div>
             <motion.div key={2} variants={item} className='mt-7'>Attempting download from Yahoo! Finance...</motion.div>
             <motion.div key={3} variants={item} className='mt-7'>First spin-up takes about 20 seconds...</motion.div>
-            <motion.div key={4} variants={item} className='mt-7'>But this is longer than usual... 😬</motion.div>
           </motion.div>
         </div>
       </div>
