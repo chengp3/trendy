@@ -40,10 +40,10 @@ const Loading = () => {
         </motion.div>
         <div className='h-full w-1/2 flex flex-col justify-center'>
           <motion.div variants={container} initial="hide" animate="show">
-            <motion.div key={1} variants={item} className=''>Spinning up Lambda Function...</motion.div>
-            <motion.div key={2} variants={item} className='mt-7'>Requesting data from Yahoo! Finance...</motion.div>
-            <motion.div key={3} variants={item} className='mt-7'>First spin-up takes around 20 seconds...</motion.div>
-            <motion.div key={4} variants={item} className='mt-7'>But this is longer than usual...</motion.div>
+            <motion.div key={1} variants={item} className=''>Calling Lambda to request data...</motion.div>
+            <motion.div key={2} variants={item} className='mt-7'>Attempting download from Yahoo! Finance...</motion.div>
+            <motion.div key={3} variants={item} className='mt-7'>First spin-up takes about 20 seconds...</motion.div>
+            <motion.div key={4} variants={item} className='mt-7'>But this is longer than usual... 😬</motion.div>
           </motion.div>
         </div>
       </div>
@@ -51,7 +51,10 @@ const Loading = () => {
   }
   else {
     return (
-      <motion.div key={0} className='mt-5' initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 60}}}>Request time out :(</motion.div>
+      <motion.div key={0} className='h-full w-full flex flex-col justify-center items-center' initial={{opacity: 0}} animate={{opacity: 1}}>
+        <p>Request time out 😭</p> 
+        <p>You can try again by refreshing or selecting another instrument!</p>
+      </motion.div>
     )
   }
 
