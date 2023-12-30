@@ -36,10 +36,10 @@ const Loading = () => {
         </motion.div>
         <div className='h-full w-1/2 flex flex-col justify-center'>
           <motion.div variants={container} initial="hide" animate="show">
-            <motion.div key={useId()} variants={item} className=''>Requesting data from Yahoo! Finance...</motion.div>
-            <motion.div key={useId()} variants={item} className='mt-7'>Usually takes 10-20 seconds...</motion.div>
-            <motion.div key={useId()} variants={item} className='mt-7'>So how was your day...</motion.div>
-            <motion.div key={useId()} variants={item} className='mt-7'>Taking longer than usual...</motion.div>
+            <motion.div key={1} variants={item} className=''>Requesting data from Yahoo! Finance...</motion.div>
+            <motion.div key={2} variants={item} className='mt-7'>Usually takes 10-20 seconds...</motion.div>
+            <motion.div key={3} variants={item} className='mt-7'>So how was your day...</motion.div>
+            <motion.div key={4} variants={item} className='mt-7'>Taking longer than usual...</motion.div>
           </motion.div>
         </div>
       </div>
@@ -47,7 +47,7 @@ const Loading = () => {
   }
   else {
     return (
-      <motion.div key={useId()} className='mt-5' initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 60}}}>Request timed out (60s) :( please try another time!</motion.div>
+      <motion.div key={0} className='mt-5' initial={{opacity: 0}} animate={{opacity: 1, transition: {delay: 60}}}>Request timed out (60s) :( please try another time!</motion.div>
     )
   }
 
